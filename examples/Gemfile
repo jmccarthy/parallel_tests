@@ -1,0 +1,9 @@
+gem 'bundler', '0.9.26'
+gem 'rails', '2.3.10'
+gem "test-unit", "2.1.1"
+# gem "mysql", "2.8.1"
+gem 'ruby-prof'
+gem "sqlite3"
+gem "ruby-debug"
+gem "rake", "0.8.7"
+gem "parallel_tests", "0.4.9", :require => "parallel_tests", :path => "~/chores/parallel_tests"

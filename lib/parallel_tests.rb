@@ -1,8 +1,10 @@
 require 'parallel'
 require 'parallel_tests/grouper'
 require 'parallel_tests/railtie'
+require 'drb'
 
 class ParallelTests
+  
   VERSION = File.read( File.join(File.dirname(__FILE__),'..','VERSION') ).strip
 
   # parallel:spec[2,controller] <-> parallel:spec[controller]
@@ -29,6 +31,11 @@ class ParallelTests
   end
 
   def self.run_tests(test_files, process_number, options)
+          
+    # send require list to master server (TODO)
+    # master = DRbObject.new(nil, "druby://127.0.0.1:1337")
+    # master.require_tests(test_files)
+    
     require_list = test_files.map { |filename| "\"#{filename}\"" }.join(",")
     cmd = "ruby -Itest #{options} -e '[#{require_list}].each {|f| require f }'"
     execute_command(cmd, process_number)[:stdout]

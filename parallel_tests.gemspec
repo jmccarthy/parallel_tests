@@ -14,28 +14,29 @@ Gem::Specification.new do |s|
   s.executables = ["parallel_spec", "parallel_cucumber", "parallel_test"]
   s.files = [
     ".gitignore",
-     "Gemfile",
-     "Gemfile.lock",
-     "Rakefile",
-     "Readme.md",
-     "VERSION",
-     "bin/parallel_cucumber",
-     "bin/parallel_spec",
-     "bin/parallel_test",
-     "lib/parallel_cucumber.rb",
-     "lib/parallel_specs.rb",
-     "lib/parallel_specs/spec_runtime_logger.rb",
-     "lib/parallel_tests.rb",
-     "lib/parallel_tests/grouper.rb",
-     "lib/parallel_tests/railtie.rb",
-     "lib/parallel_tests/tasks.rb",
-     "lib/tasks/parallel_tests.rake",
-     "parallel_tests.gemspec",
-     "spec/integration_spec.rb",
-     "spec/parallel_cucumber_spec.rb",
-     "spec/parallel_specs_spec.rb",
-     "spec/parallel_tests_spec.rb",
-     "spec/spec_helper.rb"
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile",
+    "Readme.md",
+    "VERSION",
+    "bin/parallel_cucumber",
+    "bin/parallel_spec",
+    "bin/parallel_test",
+    "lib/parallel_cucumber.rb",
+    "lib/parallel_specs.rb",
+    "lib/parallel_specs/spec_runtime_logger.rb",
+    "lib/parallel_tests.rb",
+    "lib/parallel_tests/grouper.rb",
+    "lib/parallel_tests/railtie.rb",
+    "lib/parallel_tests/tasks.rb",
+    "lib/parallel_tests/queued_test_suite.rb",
+    "lib/tasks/parallel_tests.rake",
+    "parallel_tests.gemspec",
+    "spec/integration_spec.rb",
+    "spec/parallel_cucumber_spec.rb",
+    "spec/parallel_specs_spec.rb",
+    "spec/parallel_tests_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/grosser/parallel_tests}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -44,10 +45,10 @@ Gem::Specification.new do |s|
   s.summary = %q{Run tests / specs / features in parallel}
   s.test_files = [
     "spec/parallel_cucumber_spec.rb",
-     "spec/integration_spec.rb",
-     "spec/parallel_specs_spec.rb",
-     "spec/parallel_tests_spec.rb",
-     "spec/spec_helper.rb"
+    "spec/integration_spec.rb",
+    "spec/parallel_specs_spec.rb",
+    "spec/parallel_tests_spec.rb",
+    "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then

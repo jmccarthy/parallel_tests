@@ -53,7 +53,7 @@ else
 
   tests_folder = File.join(task, options[:path_prefix].to_s)
   tests_folder = File.join(options[:root], tests_folder) unless options[:root].to_s.empty?
-
+  
   groups = klass.tests_in_groups(options[:files] || tests_folder, num_processes, :no_sort => options[:no_sort])
   num_processes = groups.size
 
@@ -63,9 +63,14 @@ else
   num_tests = groups.inject(0){|sum,item| sum + item.size }
   puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
 
-  output = Parallel.map(groups, :in_processes => num_processes) do |group|
-    klass.run_tests(group, groups.index(group), options[:test_options])
+  options[:parallelize_test_cases] = true
+  all_tests_group = if !!options[:parallelize_test_cases]
+    #create an ALL group to pass to parallel
+    klass.tests_in_groups(options[:files] || tests_folder, 1, :no_sort => options[:no_sort]).first
   end
+  output = Parallel.map(groups, :in_processes => num_processes) do |group|
+    klass.run_tests(all_tests_group || group, groups.index(group), options[:test_options])
+  end    
 
   #parse and print results
   results = klass.find_results(output*"")
