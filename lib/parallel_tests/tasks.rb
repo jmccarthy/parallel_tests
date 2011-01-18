@@ -39,19 +39,19 @@ namespace :parallel do
 
   desc 'start a master runner'
   namespace :master_runner do
-    task :start do    
+    task :start do         
       require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'parallel_tests', 'master_runner.rb')
-      master_runner = MasterRunner.new
-      DRb.start_service("druby://127.0.0.1:1337", master_runner)
+      DRb.start_service("druby://127.0.0.1:1338", MasterRunner.new)
     end
   end
-
-  #start the master runner
-  Rake::Task['parallel:master_runner:start'].invoke
 
   ['test', 'spec', 'features'].each do |type|
     desc "run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, :count, :path_prefix, :options do |t,args|
+      
+      #start the master runner
+      Rake::Task['parallel:master_runner:start'].invoke
+      
       $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..'))
       require "parallel_tests"
       count, prefix, options = ParallelTests.parse_rake_args(args)

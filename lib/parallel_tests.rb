@@ -42,7 +42,7 @@ class ParallelTests
   
   def self.preload_tests_on_master(require_list)
     # send require list to master server
-    master = DRbObject.new(nil, "druby://127.0.0.1:1337")
+    master = DRbObject.new(nil, "druby://127.0.0.1:1338")
     master.preload_tests(require_list)
   end  
   

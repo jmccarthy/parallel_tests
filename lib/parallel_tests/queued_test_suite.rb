@@ -8,9 +8,10 @@ module QueuedTestSuite
 
       yield(STARTED, name)
 
-      master = DRbObject.new(nil, "druby://127.0.0.1:1337")
+      DRb.start_service
+      master = DRbObject.new(nil, "druby://127.0.0.1:1338")
       
-      puts "TESTS:#{@tests.size}"  
+      puts "# of TESTS:#{@tests.size}, PROCESSOR ##{ENV['TEST_ENV_NUMBER']}"  
       # debugger
       
       master.run_tests_later(@tests, ENV['TEST_ENV_NUMBER'].to_i)             

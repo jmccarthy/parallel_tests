@@ -22,7 +22,7 @@ class MasterRunner
   
   def run_tests_later(tests, process_number)
     # TODO: synchronize this and release only when loaded
-    if first_process? process_number
+    if first_process?(process_number) && !@tests_registered
       tests.each do |test_case|
         run_later(test_case, process_number)       
         puts "enqueued #{test_case.name}"      
