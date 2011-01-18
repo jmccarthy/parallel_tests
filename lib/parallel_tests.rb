@@ -31,16 +31,20 @@ class ParallelTests
   end
 
   def self.run_tests(test_files, process_number, options)
-          
-    # send require list to master server (TODO)
-    # master = DRbObject.new(nil, "druby://127.0.0.1:1337")
-    # master.require_tests(test_files)
     
+    preload_tests_on_master(test_files)      
+          
     require_list = test_files.map { |filename| "\"#{filename}\"" }.join(",")
     cmd = "ruby -Itest #{options} -e '[#{require_list}].each {|f| require f }'"
     execute_command(cmd, process_number)[:stdout]
   end
-
+  
+  def self.preload_tests_on_master(require_list)
+    # send require list to master server
+    master = DRbObject.new(nil, "druby://127.0.0.1:1337")
+    master.preload_tests(require_list)
+  end  
+  
   def self.execute_command(cmd, process_number)
     cmd = "TEST_ENV_NUMBER=#{test_env_number(process_number)} ; export TEST_ENV_NUMBER; #{cmd}"
     f = open("|#{cmd}", 'r')

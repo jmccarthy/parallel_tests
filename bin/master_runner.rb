@@ -33,8 +33,9 @@ class MasterRunner
   end  
   
   # TODO: call from parallels_tests so that we require all tests and able to add them right here from master rather than from the 1st process
-  def require_tests(test_files)
-    test_files.each {|filename| require "\"#{filename}\"" }
+  def preload_tests(test_files)
+    puts "REQUIRING FILES:#{test_files.inspect}"
+    test_files.each {|f| require f }
   end  
 
   def close_queue(process_number)

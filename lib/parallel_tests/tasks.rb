@@ -47,6 +47,15 @@ namespace :parallel do
       abort unless system(command) # allow to chain tasks e.g. rake parallel:spec parallel:features
     end
   end
+  
+  desc 'start a master runner'
+  namespace :master_runner do
+    task :start do
+      runner = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'master_runner.rb')
+      command = "ruby -Itest #{runner}"
+      abort unless system(command)
+    end   
+  end
 end
 
 #backwards compatability
