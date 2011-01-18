@@ -66,9 +66,9 @@ else
 
 
   # TODO: pass thru arguments
-  options[:parallelize_test_cases] = true
   all_tests_group = if !!options[:parallelize_test_cases]
     #create an ALL group to pass to parallel
+    puts "parallelizing all test cases"    
     klass.tests_in_groups(options[:files] || tests_folder, 1, :no_sort => options[:no_sort]).first
   end
   output = Parallel.map(groups, :in_processes => num_processes) do |group|

@@ -424,3 +424,445 @@
 [0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
   [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:55:44) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:55:44) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:57:23) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:57:23) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:58:04) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:58:04) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:59:24) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 11:59:24) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:00:30) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:00:30) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:04:23) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:04:23) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:05:11) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:05:11) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:15:00) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:15:00) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:23:18) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:23:19) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:24:01) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:24:01) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:25:10) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:25:10) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:26:19) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:26:19) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:26:53) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-18 12:26:53) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /Users/mlubarsky/chores/parallel_tests/lib/parallel_tests/queued_test_suite.rb:20:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnermediator.rb:48:in `run_suite'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunner.rb:25:in `start'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:307:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit/autorunner.rb:52:in `run'
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/gems/test-unit-2.1.1/lib/test/unit.rb:326
+  /Users/mlubarsky/.rvm/gems/ruby-1.8.7-p302/bin/rake:19
+
+Rendering rescues/layout (not_found)

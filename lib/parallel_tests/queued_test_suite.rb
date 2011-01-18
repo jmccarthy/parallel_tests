@@ -8,15 +8,15 @@ module QueuedTestSuite
 
       yield(STARTED, name)
 
-      @master = DRbObject.new(nil, "druby://127.0.0.1:1337")
+      master = DRbObject.new(nil, "druby://127.0.0.1:1337")
       
       puts "TESTS:#{@tests.size}"  
       # debugger
       
-      @master.run_tests_later(@tests, ENV['TEST_ENV_NUMBER'].to_i)             
+      master.run_tests_later(@tests, ENV['TEST_ENV_NUMBER'].to_i)             
                   
-      while @master.has_more? 
-        test_case = @master.next        
+      while master.has_more? 
+        test_case = master.next        
         test_case.run(result, &progress_block)            
         puts "run #{test_case.name}"   
       end

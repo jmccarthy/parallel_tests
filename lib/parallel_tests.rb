@@ -30,10 +30,11 @@ class ParallelTests
     end
   end
 
-  def self.run_tests(test_files, process_number, options)
+  def self.run_tests(test_files, process_number, options) 
     
-    preload_tests_on_master(test_files)      
-          
+    puts "PROCESS_NUMBER:#{process_number.to_i}"
+    preload_tests_on_master(test_files) unless process_number.to_i > 1
+                 
     require_list = test_files.map { |filename| "\"#{filename}\"" }.join(",")
     cmd = "ruby -Itest #{options} -e '[#{require_list}].each {|f| require f }'"
     execute_command(cmd, process_number)[:stdout]

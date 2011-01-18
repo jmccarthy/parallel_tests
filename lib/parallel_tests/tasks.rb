@@ -36,6 +36,19 @@ namespace :parallel do
     run_in_parallel('rake db:test:load', args)
   end
 
+
+  desc 'start a master runner'
+  namespace :master_runner do
+    task :start do    
+      require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'parallel_tests', 'master_runner.rb')
+      master_runner = MasterRunner.new
+      DRb.start_service("druby://127.0.0.1:1337", master_runner)
+    end
+  end
+
+  #start the master runner
+  Rake::Task['parallel:master_runner:start'].invoke
+
   ['test', 'spec', 'features'].each do |type|
     desc "run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, :count, :path_prefix, :options do |t,args|
@@ -43,19 +56,10 @@ namespace :parallel do
       require "parallel_tests"
       count, prefix, options = ParallelTests.parse_rake_args(args)
       executable = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'parallel_test')
-      command = "#{executable} --type #{type} -n #{count} -p '#{prefix}' -r '#{Rails.root}' -o '#{options}'"
+      command = "#{executable} --type #{type} -n #{count} -p '#{prefix}' -r '#{Rails.root}' -o '#{options}' --parallelize-testcases"
       abort unless system(command) # allow to chain tasks e.g. rake parallel:spec parallel:features
     end
-  end
-  
-  desc 'start a master runner'
-  namespace :master_runner do
-    task :start do
-      runner = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'master_runner.rb')
-      command = "ruby -Itest #{runner}"
-      abort unless system(command)
-    end   
-  end
+  end  
 end
 
 #backwards compatability
