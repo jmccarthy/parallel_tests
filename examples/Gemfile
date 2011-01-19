@@ -6,4 +6,4 @@ gem 'ruby-prof'
 gem "sqlite3"
 gem "ruby-debug"
 gem "rake", "0.8.7"
-gem "parallel_tests", "0.4.9", :require => "parallel_tests", :path => "~/chores/parallel_tests"
+gem "parallel_tests", "0.4.9", :require => "parallel_tests", :path => ".."
