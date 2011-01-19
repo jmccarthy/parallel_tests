@@ -61,7 +61,7 @@ class MasterRunner
   end  
 
   def close_queue(process_number)
-    raise RuntimeError, "Unable to close queue for processor ##{process_number}: only 1st process can do this!" unless first_process?(process_number)
+    # raise RuntimeError, "Unable to close queue for processor ##{process_number}: only 1st process can do this!" unless first_process?(process_number)
     @queue = @queue.uniq
     @tests_registered = true
   end  
