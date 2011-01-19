@@ -49,7 +49,7 @@ class MasterRunner
     # @mutex.synchronize do
       return if @tests_loaded 
       puts "REQUIRING FILES:#{test_files.count}"
-      test_files.each {|f| require f } 
+      # test_files.each {|f| require f } 
       @tests_loaded = true
     # end
     puts test_files.inspect
