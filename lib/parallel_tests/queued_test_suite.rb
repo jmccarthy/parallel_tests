@@ -20,7 +20,6 @@ module QueuedTestSuite
       while master.has_more? 
         test_case = master.next
         test_case.run(result,&progress_block)            
-        puts "run #{test_case.name}"   
       end
 
       yield(FINISHED, name)

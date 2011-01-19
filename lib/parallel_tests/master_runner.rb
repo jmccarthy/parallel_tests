@@ -4,9 +4,10 @@ require 'monitor'
 
 $LOAD_PATH << "test"
 
-class MasterRunner < Monitor
+class MasterRunner
 
   def initialize
+    @mutex = Mutex.new
     @queue = Array.new
     @tests_registered = false
     @tests_loaded = false
@@ -15,7 +16,7 @@ class MasterRunner < Monitor
 
   def run_later(test_case, process_number)
     if first_process? process_number
-      puts "added #{test_case.name} to the queue, QUEUE SIZE:#{@queue.size}"
+      log_queue_size "run_later(#{process_number})"
       @queue << test_case
     else
       puts "skipping #{test_case.name} for processor ##{[process_number]}, QUEUE SIZE:#{@queue.size}"
@@ -24,11 +25,11 @@ class MasterRunner < Monitor
 
   def run_tests_later(tests, process_number)
     # TODO: synchronize this and release only when loaded
-    synchronize do
+    @mutex.synchronize do
       if first_process?(process_number) && !@tests_registered
         tests.each do |test_case|
           run_later(test_case, process_number)       
-          puts "enqueued #{test_case.name}"      
+          log_queue_size "run_tests_later(#{process_number})"
         end        
         close_queue(process_number)
       else
@@ -36,7 +37,7 @@ class MasterRunner < Monitor
 
         # puts "wait until all tests are registered, processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
         #       #return only if registered already, TODO: needs synchronization
-        #       while !tests_registered?; sleep 1; end
+        while !tests_registered?; sleep 1; end
         #       puts "wait over for processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
       end    
     end
@@ -44,9 +45,9 @@ class MasterRunner < Monitor
 
   # TODO: call from parallels_tests so that we require all tests and able to add them right here from master rather than from the 1st process
   def preload_tests(test_files)
-    synchronize do
+    @mutex.synchronize do
       return if @tests_loaded 
-      puts "REQUIRING FILES:#{test_files.inspect}"
+      puts "REQUIRING FILES:#{test_files.count}"
       test_files.each {|f| require f } 
       @tests_loaded = true
     end
@@ -61,10 +62,14 @@ class MasterRunner < Monitor
   def tests_registered?
     @tests_registered
   end  
+  
+  def log_queue_size(caller)
+    puts "QUEUE SIZE (#{caller}):#{@queue.size}" if @queue.size % 25 == 0
+  end
 
   def next
     test_case = @queue.pop
-    puts "popping #{test_case.name} to the queue, QUEUE SIZE:#{@queue.size}"
+    log_queue_size 'pop'
     test_case
   end  
 
