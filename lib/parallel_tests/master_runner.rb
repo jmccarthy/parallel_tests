@@ -26,7 +26,7 @@ class MasterRunner
   def run_tests_later(tests, process_number)
     # TODO: synchronize this and release only when loaded
     @mutex.synchronize do
-      if first_process?(process_number) && !@tests_registered
+      if !tests_registered #first_process?(process_number) && 
         tests.each do |test_case|
           run_later(test_case, process_number)       
           log_queue_size "run_tests_later(#{process_number})"
@@ -37,7 +37,7 @@ class MasterRunner
 
         # puts "wait until all tests are registered, processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
         #       #return only if registered already, TODO: needs synchronization
-        while !tests_registered?; sleep 1; end
+        # while !tests_registered?; sleep 1; end
         #       puts "wait over for processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
       end    
     end
