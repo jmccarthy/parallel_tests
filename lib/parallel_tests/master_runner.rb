@@ -15,12 +15,12 @@ class MasterRunner
   end  
 
   def run_later(test_case, process_number)
-    if first_process? process_number
+    # if first_process? process_number
       log_queue_size "run_later(#{process_number})"
       @queue << test_case
-    else
-      puts "skipping #{test_case.name} for processor ##{[process_number]}, QUEUE SIZE:#{@queue.size}"
-    end
+    # else
+    #   puts "skipping #{test_case.name} for processor ##{[process_number]}, QUEUE SIZE:#{@queue.size}"
+    # end
   end
 
   def run_tests_later(tests, process_number)
