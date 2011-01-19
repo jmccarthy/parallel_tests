@@ -41,6 +41,7 @@ class MasterRunner
         #       puts "wait over for processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
       end    
     end
+    nil
   end  
 
   # TODO: call from parallels_tests so that we require all tests and able to add them right here from master rather than from the 1st process
@@ -56,6 +57,7 @@ class MasterRunner
       @tests_loaded = true
     end
     puts test_files.inspect
+    nil
   end  
 
   def close_queue(process_number)
