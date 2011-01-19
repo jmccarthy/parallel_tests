@@ -41,7 +41,7 @@ namespace :parallel do
   namespace :master_runner do
     task :start do         
       require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'parallel_tests', 'master_runner.rb')
-      DRb.start_service("druby://127.0.0.1:1338", MasterRunner.new)
+      DRb.start_service(MasterRunner::URL, MasterRunner.new)
     end
   end
 

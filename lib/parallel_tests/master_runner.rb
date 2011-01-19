@@ -1,77 +1,55 @@
 require 'drb'
 require 'drb/observer'
-require 'monitor'
 
 $LOAD_PATH << "test"
 
 class MasterRunner
 
+  URL = "druby://127.0.0.1:1345"
+
   def initialize
     @mutex = Mutex.new
     @queue = Array.new
     @tests_registered = false
-    @tests_loaded = false
-    super
+    @registering_process_number = nil
   end  
 
-  def run_later(test_case, process_number)
-    # if first_process? process_number
+  def run_later(test_case, process_number)    
+    return nil if tests_registered?
+    if @registering_process_number.nil? #store the very first process
+      @mutex.synchronize do
+        @registering_process_number = process_number.to_i if @registering_process_number.nil? #conditional to prevent concurrent overwrite
+      end  
+    end
+    if process_number.to_i == @registering_process_number.to_i #return if the caller is not a registering process
       log_queue_size "run_later(#{process_number})"
       @queue << test_case
-    # else
-    #   puts "skipping #{test_case.name} for processor ##{[process_number]}, QUEUE SIZE:#{@queue.size}"
-    # end
-  end
-
-  def run_tests_later(tests, process_number)
-    # TODO: synchronize this and release only when loaded
-    @mutex.synchronize do
-      if !tests_registered? #first_process?(process_number) && 
-        tests.each do |test_case|
-          run_later(test_case, process_number)       
-          log_queue_size "run_tests_later(#{process_number})"
-        end        
-        close_queue(process_number)
-      else
-        # TODO: needs synchronization on tests_registered
-
-        # puts "wait until all tests are registered, processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
-        #       #return only if registered already, TODO: needs synchronization
-        # while !tests_registered?; sleep 1; end
-        #       puts "wait over for processor ##{process_number}, QUEUE SIZE:#{@queue.size}"
-      end    
-    end
-    nil
-  end  
-
-  # TODO: call from parallels_tests so that we require all tests and able to add them right here from master rather than from the 1st process
-  def preload_tests(test_files)
-    puts "checking if test_files were successfully unmarshalled"
-    @mutex.synchronize do
-      return if @tests_loaded 
-      puts "REQUIRING FILES:#{test_files.count}"
-      test_files.each do |f| 
-        puts "REQ FILE:#{f}"
-        require f rescue puts "FAILED REQUIRING FILE:#{f}" 
-      end  
-      @tests_loaded = true
-    end
-    puts test_files.inspect
-    nil
+    else
+      log_queue_size "[skipping] run_later(#{process_number})"
+    end    
   end  
 
   def close_queue(process_number)
-    # raise RuntimeError, "Unable to close queue for processor ##{process_number}: only 1st process can do this!" unless first_process?(process_number)
-    @queue = @queue.uniq
-    @tests_registered = true
+    log_queue_size "close_queue(#{process_number}), registered by #{@registering_process_number}"
+    if process_number.to_i == @registering_process_number.to_i #return if the caller is not a registering process
+      log_queue_size "close_queue(#{process_number})"
+      @queue = @queue.uniq
+      @tests_registered = true
+    else
+      log_queue_size "[skipping] close_queue(#{process_number})"
+    end
   end  
 
   def tests_registered?
     @tests_registered
-  end  
-  
-  def log_queue_size(caller)
-    puts "QUEUE SIZE (#{caller}):#{@queue.size}" if @queue.size % 25 == 0
+  end 
+
+  # def tests_registered_by?(process_number)
+  #     tests_registered? && @registering_process_number == process_number.to_i
+  #   end  
+
+  def log_queue_size(caller, options={})
+    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}" if @queue.size % 5 == 0
   end
 
   def next
@@ -82,11 +60,5 @@ class MasterRunner
 
   def has_more?
     !@queue.empty?
-  end    
-
-  private 
-
-  def first_process?(process_number)
-    [0, 1].include? process_number # if either no parallelization used or only the first process
-  end   
+  end      
 end  
