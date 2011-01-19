@@ -45,6 +45,8 @@ class MasterRunner
 
   # TODO: call from parallels_tests so that we require all tests and able to add them right here from master rather than from the 1st process
   def preload_tests(test_files)
+    puts "checking if test_files were successfully unmarshalled"
+    puts test_files.inspect
     @mutex.synchronize do
       return if @tests_loaded 
       puts "REQUIRING FILES:#{test_files.count}"
