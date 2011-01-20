@@ -21,7 +21,7 @@ module QueuedTestSuite
 
 
       #TEST
-      @tests = @tests[-ENV['REDUCED_TEST_SUITE_SAMPLE'].to_i..-1] #for debugging
+      @tests = @tests[-ENV['MAX_TEST_SUITES'].to_i..-1] if ENV['MAX_TEST_SUITES'].to_i <= @tests.size #for debugging
 
       yield(STARTED, name)
 
@@ -51,11 +51,11 @@ module QueuedTestSuite
         tests_to_run = do_with_log("next batch of #{per_batch} ", {:modifier => :inspect}) { @master.next_batch(per_batch) }
         all_test_names.concat tests_to_run
         
-        do_with_log("run now #{tests_to_run.size} tests") do
+        # do_with_log("run now #{tests_to_run.size} tests") do
           tests_to_run.each do |test_to_run|
             run_now(test_to_run, result, &progress_block)        
           end  
-        end
+        # end
       end
 
       puts "[PROCESS ##{@process_number}] FINISHED RUNNING #{all_test_names.size} tests"     
@@ -84,7 +84,8 @@ module QueuedTestSuite
     def flatten_tests
       @tests.inject({}) do |flattened_test_cases, test|
         if test.respond_to? :tests
-          test.tests.each do |t|
+          adj_tests = ENV['MAX_TEST_CASES_PER_SUITE'].to_i <= test.tests.size ? test.tests[-ENV['MAX_TEST_CASES_PER_SUITE'].to_i..-1] : test.tests 
+          adj_tests.each do |t|
             flattened_test_cases[t.name] = t
           end  
         else

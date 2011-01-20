@@ -49,7 +49,10 @@ class MasterRunner
   def log_queue_size(caller, options={})
     log_index = (options[:log_index] || 25).to_i        
     show = options[:batch_size].to_i >= log_index ? true : @queue.size % log_index <= options[:batch_size].to_i  
-    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}" if show || ENV['REDUCED_TEST_SUITE_SAMPLE'].to_i <= log_index 
+    show_max_test_suites = ENV['MAX_TEST_SUITES'].to_i
+    show_max_test_cases = ENV['MAX_TEST_CASES_PER_SUITE'].to_i > 0 ? ENV['MAX_TEST_CASES_PER_SUITE'].to_i : 1    
+    show ||= show_max_test_suites * show_max_test_cases <= log_index if show_max_test_suites * show_max_test_cases > 0
+    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}, MAX TEST SUITES:#{show_max_test_suites}, MAX TEST CASES PER SUITE:#{show_max_test_cases}" if show
   end
 
   def next
