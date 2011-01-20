@@ -3,6 +3,17 @@ require 'test/unit/ui/console/testrunner'
 require 'drb'
 require File.dirname(__FILE__) + '/master_runner'
 
+module CI #:nodoc:
+  module Reporter #:nodoc:
+    class ReportManager            
+      def write_report(suite)
+        File.open("#{@basename}-#{suite.name.gsub(/[^a-zA-Z0-9]+/, '-')}-#{ENV['TEST_ENV_NUMBER']}.xml", "w") do |f|
+          f << suite.to_xml
+        end
+      end
+    end
+  end
+end
 
 module QueuedTestSuite
   class Test::Unit::TestSuite
