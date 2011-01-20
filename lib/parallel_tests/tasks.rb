@@ -56,7 +56,8 @@ namespace :parallel do
       require "parallel_tests"
       count, prefix, options = ParallelTests.parse_rake_args(args)
       executable = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'parallel_test')
-      command = "#{executable} --type #{type} -n #{count} -p '#{prefix}' -r '#{Rails.root}' -o '#{options}' --parallelize-testcases"
+      parallelize_opt = "  --parallelize-testcases" if !!ENV['QUEUE_TEST_CASES']
+      command = "#{executable} --type #{type} -n #{count} -p '#{prefix}' -r '#{Rails.root}' -o '#{options}'#{parallelize_opt}"
       abort unless system(command) # allow to chain tasks e.g. rake parallel:spec parallel:features
     end
   end  

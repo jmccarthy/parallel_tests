@@ -47,25 +47,27 @@ class MasterRunner
   end 
 
   def log_queue_size(caller, options={})
-    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}" if @queue.size % 25 == 0
+    log_index = (options[:log_index] || 25).to_i        
+    show = options[:batch_size].to_i >= log_index ? true : @queue.size % log_index <= options[:batch_size].to_i  
+    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}" if show || ENV['REDUCED_TEST_SUITE_SAMPLE'].to_i <= log_index 
   end
 
   def next
     test_case = @queue.pop
-    log_queue_size 'pop'
+    log_queue_size 'pop', :batch_size => 1
     test_case
   end  
 
-  def next_batch(limit=0)
+  def next_batch(limit=1)
     batch = []
-    if limit > 0
-      limit.times { batch << @queue.pop if has_more?}
-    else
-      batch << @queue.pop
-    end  
+    limit = 1 if limit == 0
+    limit.times do 
+      batch << @queue.pop if has_more? 
+    end
+    log_queue_size "next_batch(#{limit})", :batch_size => limit  
     batch
   end
-
+  
   def has_more?
     !@queue.empty?
   end      

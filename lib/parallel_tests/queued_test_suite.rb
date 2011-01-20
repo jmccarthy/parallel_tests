@@ -10,7 +10,7 @@ module QueuedTestSuite
 
 
       #TEST
-      # @tests = @tests[-2..-1] #for debugging
+      @tests = @tests[-ENV['REDUCED_TEST_SUITE_SAMPLE'].to_i..-1] #for debugging
 
       yield(STARTED, name)
 
@@ -35,8 +35,9 @@ module QueuedTestSuite
       end
 
       all_test_names = [] 
+      per_batch =  ENV['TESTS_BATCH_SIZE'].to_i
       while @master.has_more?
-        tests_to_run = do_with_log('NEXT TEST BATCH', {:modifier => :inspect}) { @master.next_batch(10) }
+        tests_to_run = do_with_log("next batch of #{per_batch} ", {:modifier => :inspect}) { @master.next_batch(per_batch) }
         all_test_names.concat tests_to_run
         
         do_with_log("run now #{tests_to_run.size} tests") do
