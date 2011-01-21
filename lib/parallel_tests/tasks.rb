@@ -49,7 +49,7 @@ namespace :parallel do
     desc "run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, :count, :path_prefix, :options do |t,args|
 
-      if ENV['QUEUE_TEST_CASES'] == true      
+      if ENV['QUEUE_TEST_CASES'] == 'true'      
         #start the master runner
         Rake::Task['parallel:master_runner:start'].invoke
         parallelize_opt = "  --parallelize-testcases"
