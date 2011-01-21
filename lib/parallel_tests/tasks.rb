@@ -48,15 +48,18 @@ namespace :parallel do
   ['test', 'spec', 'features'].each do |type|
     desc "run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, :count, :path_prefix, :options do |t,args|
-      
-      #start the master runner
-      Rake::Task['parallel:master_runner:start'].invoke
+
+      if ENV['QUEUE_TEST_CASES'] == true      
+        #start the master runner
+        Rake::Task['parallel:master_runner:start'].invoke
+        parallelize_opt = "  --parallelize-testcases"
+      end
       
       $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..'))
       require "parallel_tests"
       count, prefix, options = ParallelTests.parse_rake_args(args)
       executable = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'parallel_test')
-      parallelize_opt = "  --parallelize-testcases" if !!ENV['QUEUE_TEST_CASES']
+      
       command = "#{executable} --type #{type} -n #{count} -p '#{prefix}' -r '#{Rails.root}' -o '#{options}'#{parallelize_opt}"
       abort unless system(command) # allow to chain tasks e.g. rake parallel:spec parallel:features
     end
