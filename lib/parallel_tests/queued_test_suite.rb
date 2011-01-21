@@ -8,7 +8,8 @@ module CI #:nodoc:
     class ReportManager            
       def write_report(suite)
         File.open("#{@basename}-#{suite.name.gsub(/[^a-zA-Z0-9]+/, '-')}-#{ENV['TEST_ENV_NUMBER']}.xml", "w") do |f|
-          f << suite.to_xml
+          puts "PROCESS #{ENV['TEST_ENV_NUMBER']} writing REPORT for #{suite.name}, #{suite.testcases.map(&:name).inspect}"
+          f << suite.to_xml rescue puts "ERROR WRITING REPORT #{@basename}-#{suite.name.gsub(/[^a-zA-Z0-9]+/, '-')}-#{ENV['TEST_ENV_NUMBER']}.xml"
         end
       end
     end
@@ -82,7 +83,7 @@ module QueuedTestSuite
     end     
 
     def flatten_tests
-      @tests.inject({}) do |flattened_test_cases, test|
+      @tests.inject(ActiveSupport::OrderedHash.new) do |flattened_test_cases, test|
         if test.respond_to? :tests
           adj_tests = ENV['MAX_TEST_CASES_PER_SUITE'].to_i <= test.tests.size ? test.tests[-ENV['MAX_TEST_CASES_PER_SUITE'].to_i..-1] : test.tests 
           adj_tests.each do |t|

@@ -52,7 +52,7 @@ class MasterRunner
     show_max_test_suites = ENV['MAX_TEST_SUITES'].to_i
     show_max_test_cases = ENV['MAX_TEST_CASES_PER_SUITE'].to_i > 0 ? ENV['MAX_TEST_CASES_PER_SUITE'].to_i : 1    
     show ||= show_max_test_suites * show_max_test_cases <= log_index if show_max_test_suites * show_max_test_cases > 0
-    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}, MAX TEST SUITES:#{show_max_test_suites}, MAX TEST CASES PER SUITE:#{show_max_test_cases}" if show
+    puts "[MASTER] QUEUE SIZE (#{caller}):#{@queue.size}" if show
   end
 
   def next
