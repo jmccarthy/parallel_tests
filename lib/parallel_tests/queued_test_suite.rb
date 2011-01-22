@@ -29,8 +29,8 @@ module QueuedTestSuite
 
       @flattened_test_cases, @unflattened_test_suites = flatten_tests(@tests, unflattened_test_suites)
 
-      puts "FLATTENED TEST CASES: #{@flattened_test_cases.keys.inspect}"
-      puts "UNFLATTENED TEST SUITES: #{@unflattened_test_suites.keys.inspect}"
+      puts "FLATTENED TEST CASES: #{@flattened_test_cases.size}"
+      puts "UNFLATTENED TEST SUITES: #{@unflattened_test_suites.size}"
 
       DRb.start_service
       @master = DRbObject.new(nil, MasterRunner::URL)
@@ -65,20 +65,15 @@ module QueuedTestSuite
       while @master.has_more?(queue_type)
         test_names_to_run = do_with_log("next batch of #{per_batch} #{queue_type}", {:modifier => :inspect}) { @master.next_batch(queue_type, per_batch) }
       
-        tests_to_run = if queue_type == :test_case_queue
-          @flattened_test_cases.slice(*test_names_to_run).values
-        else  
-          test_suites_to_run = @unflattened_test_suites.slice(*test_names_to_run).values
-          flatten_tests(test_suites_to_run, [])[0].values          
-        end  
+        tests_to_run = (queue_type == :test_case_queue ? @flattened_test_cases : @unflattened_test_suites).slice(*test_names_to_run).values     
 
         all_test_names.concat tests_to_run.map(&:name)
 
-        tests_to_run.each do |test_case|          
-          if test_case
-            test_case.run(result, &progress_block)
+        tests_to_run.each do |test_case_or_suite|          
+          if test_case_or_suite
+            test_case_or_suite.run(result, &progress_block)
           else
-            puts "[PROCESS ##{@process_number}] ERROR: UNABLE TO FIND #{test_to_run} )"  
+            puts "[PROCESS ##{@process_number}] ERROR: UNABLE TO FIND #{test_case_or_suite.inspect} )"  
           end
         end
       end
