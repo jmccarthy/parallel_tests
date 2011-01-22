@@ -18,8 +18,10 @@ end
 
 module QueuedTestSuite
   class Test::Unit::TestSuite
+    alias :non_atomic_run :run
     def run(result, &progress_block)
 
+      
       @tests = @tests[-ENV['MAX_TEST_SUITES'].to_i..-1] if ENV['MAX_TEST_SUITES'].to_i <= @tests.size #for debugging
 
       yield(STARTED, name)
@@ -71,7 +73,8 @@ module QueuedTestSuite
 
         tests_to_run.each do |test_case_or_suite|          
           if test_case_or_suite
-            test_case_or_suite.run(result, &progress_block)
+            run_method_name = (queue_type == :test_case_queue) ? :run : :non_atomic_run 
+            test_case_or_suite.send(run_method_name.to_sym, result, &progress_block)
           else
             puts "[PROCESS ##{@process_number}] ERROR: UNABLE TO FIND #{test_case_or_suite.inspect} )"  
           end
