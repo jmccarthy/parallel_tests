@@ -25,7 +25,8 @@ class ParallelTests
   def self.tests_in_groups(root, num_groups, options={})
     if options[:queue_tests]
       non_parallel_tests = ENV['NON_PARALLEL_TESTS'].to_a.empty? ? [] : ENV['NON_PARALLEL_TESTS'].split(',')
-      Grouper.in_groups_for_queue(find_tests(root), num_groups, non_parallel_tests)      
+      exclude_tests = ENV['EXCLUDE_TESTS'].to_a.empty? ? [] : ENV['EXCLUDE_TESTS'].split(',')
+      Grouper.in_groups_for_queue(find_tests(root, exclude_tests), num_groups, non_parallel_tests)      
     elsif options[:no_sort] == true
       Grouper.in_groups(find_tests(root), num_groups)
     else        
@@ -100,8 +101,8 @@ class ParallelTests
     "_test.rb"
   end
 
-  def self.tests_with_runtime(root)
-    tests = find_tests(root)
+  def self.tests_with_runtime(root,exclude_list=[])
+    tests = find_tests(root,exclude_list)
     runtime_file = File.join(root,'..','tmp','parallel_profile.log')
     lines = File.read(runtime_file).split("\n") rescue []
 
@@ -118,11 +119,15 @@ class ParallelTests
     end
   end
 
-  def self.find_tests(root)
+  def self.find_tests(root,exclude_list=[])
     if root.is_a?(Array)
       root
     else
-      Dir["#{root}**/**/*#{self.test_suffix}"]
+      files = Dir["#{root}**/**/*#{self.test_suffix}"]
+      exclude_list.each do |excluded|
+        files.delete_if { |f| f.gsub('_','') =~ /#{excluded}/i}      
+      end
+      files
     end
   end
 end

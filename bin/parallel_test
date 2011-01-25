@@ -57,9 +57,6 @@ else
   
   groups = klass.tests_in_groups(options[:files] || tests_folder, num_processes, :no_sort => options[:no_sort], :queue_tests => options[:queue_tests])
   
-  # puts "GROUPS: #{groups.size}, indexes #{ groups.map { |g| groups.index(g) }}"
-  
-  
   num_processes = groups.size
 
   #adjust processes to groups
@@ -68,18 +65,14 @@ else
   num_tests = groups.inject(0){|sum,item| sum + item.size }
   puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
 
-  # output = Parallel.map(groups, :in_processes => num_processes) do |group|
-  #     puts "index of group #{group.inspect} IS #{groups.index(group)}"
-  #   end  
   output = Parallel.map(groups, :in_processes => num_processes) do |group|
     group_index, group_files = if group.is_a? Hash 
       [group[:index], group[:files]]
     else
       [group, groups.index(group)]  
     end  
-    puts "group index = #{group_index}, size:#{group_files.size}"
-    o = klass.run_tests(group_files, group_index, options[:test_options])
-    o
+    puts "parallel group index = #{group_index}, will load #{group_files.size} files"
+    klass.run_tests(group_files, group_index, options[:test_options])
   end    
 
   #parse and print results
