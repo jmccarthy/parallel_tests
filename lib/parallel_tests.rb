@@ -26,6 +26,7 @@ class ParallelTests
     if options[:queue_tests]
       non_parallel_tests = ENV['NON_PARALLEL_TESTS'].to_a.empty? ? [] : ENV['NON_PARALLEL_TESTS'].split(',')
       exclude_tests = ENV['EXCLUDE_TESTS'].to_a.empty? ? [] : ENV['EXCLUDE_TESTS'].split(',')
+      puts "EXCLUDED TESTS:#{exclude_tests.inspect}"
       Grouper.in_groups_for_queue(find_tests(root, exclude_tests), num_groups, non_parallel_tests)      
     elsif options[:no_sort] == true
       Grouper.in_groups(find_tests(root), num_groups)
