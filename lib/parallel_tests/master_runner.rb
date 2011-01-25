@@ -80,10 +80,9 @@ class MasterRunner
     limit.times do 
       if queue_type == :test_case_queue
         batch << @test_case_queue.pop if has_more_test_cases? 
-      else
+      else 
         batch << @test_suite_queue.pop if has_more_test_suites? 
       end        
-
     end
     log_queue_size "next_batch(#{queue_type}, #{limit})", queue_type, :batch_size => limit  
     batch
@@ -98,6 +97,7 @@ class MasterRunner
   end      
   
   def has_more?(queue_type)
+    log_queue_size "has_more?(#{queue_type})=#{queue_type == :test_case_queue ? !@test_case_queue.empty? : !@test_suite_queue.empty?}", queue_type
     queue_type == :test_case_queue ? !@test_case_queue.empty? : !@test_suite_queue.empty?
   end
 end  

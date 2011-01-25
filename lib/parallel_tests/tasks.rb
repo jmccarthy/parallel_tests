@@ -52,7 +52,7 @@ namespace :parallel do
       if ENV['QUEUE_TEST_CASES'] == 'true'      
         #start the master runner
         Rake::Task['parallel:master_runner:start'].invoke
-        parallelize_opt = "  --parallelize-testcases"
+        parallelize_opt = "  --queue-tests --no-sort"
       end
       
       $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..'))

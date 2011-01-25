@@ -23,9 +23,12 @@ class ParallelTests
 
   # finds all tests and partitions them into groups
   def self.tests_in_groups(root, num_groups, options={})
-    if options[:no_sort] == true
+    if options[:queue_tests]
+      non_parallel_tests = ENV['NON_PARALLEL_TESTS'].to_a.empty? ? [] : ENV['NON_PARALLEL_TESTS'].split(',')
+      Grouper.in_groups_for_queue(find_tests(root), num_groups, non_parallel_tests)      
+    elsif options[:no_sort] == true
       Grouper.in_groups(find_tests(root), num_groups)
-    else
+    else        
       Grouper.in_even_groups_by_size(tests_with_runtime(root), num_groups)
     end
   end

@@ -19,7 +19,7 @@ BANNER
   opts.on("-n [PROCESSES]", Integer, "How many processes to use, default: available CPUs"){|n| options[:count] = n }
   opts.on("-p", '--path [PATH]', "run tests inside this path only"){|path| options[:path_prefix] = path }
   opts.on("--no-sort", "do not sort files before running them"){ |no_sort| options[:no_sort] = no_sort }
-  opts.on("--parallelize-testcases", "distribute and run test cases in parallel"){ |parallelize_test_cases| options[:parallelize_test_cases] = parallelize_test_cases }
+  opts.on("--queue-tests", "distribute and run test cases in parallel"){ |queue_tests| options[:queue_tests] = queue_tests }
   opts.on("-m [FLOAT]", "--multiply-processes [FLOAT]", Float, "use given number as a multiplier of processes to run"){ |multiply| options[:multiply] = multiply }
   opts.on("-r", '--root [PATH]', "execute test commands from this path"){|path| options[:root] = path }
   opts.on("-e", '--exec [COMMAND]', "execute this code parallel and with ENV['TEST_ENV_NUM']"){|path| options[:execute] = path }
@@ -55,7 +55,11 @@ else
   tests_folder = File.join(task, options[:path_prefix].to_s)
   tests_folder = File.join(options[:root], tests_folder) unless options[:root].to_s.empty?
   
-  groups = klass.tests_in_groups(options[:files] || tests_folder, num_processes, :no_sort => options[:no_sort])
+  groups = klass.tests_in_groups(options[:files] || tests_folder, num_processes, :no_sort => options[:no_sort], :queue_tests => options[:queue_tests])
+  
+  # puts "GROUPS: #{groups.size}, indexes #{ groups.map { |g| groups.index(g) }}"
+  
+  
   num_processes = groups.size
 
   #adjust processes to groups
@@ -64,15 +68,18 @@ else
   num_tests = groups.inject(0){|sum,item| sum + item.size }
   puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
 
-
-  # TODO: pass thru arguments
-  all_tests_group = if !!options[:parallelize_test_cases]
-    #create an ALL group to pass to parallel
-    puts "parallelizing all test cases"    
-    klass.tests_in_groups(options[:files] || tests_folder, 1, :no_sort => options[:no_sort]).first
-  end
+  # output = Parallel.map(groups, :in_processes => num_processes) do |group|
+  #     puts "index of group #{group.inspect} IS #{groups.index(group)}"
+  #   end  
   output = Parallel.map(groups, :in_processes => num_processes) do |group|
-    klass.run_tests(all_tests_group || group, groups.index(group), options[:test_options])
+    group_index, group_files = if group.is_a? Hash 
+      [group[:index], group[:files]]
+    else
+      [group, groups.index(group)]  
+    end  
+    puts "group index = #{group_index}, size:#{group_files.size}"
+    o = klass.run_tests(group_files, group_index, options[:test_options])
+    o
   end    
 
   #parse and print results
