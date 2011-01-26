@@ -63,7 +63,7 @@ else
   abort "no #{name}s found!" if groups.size == 0
 
   num_tests = groups.inject(0) do |sum,item| 
-    sum + (item.is_a? Hash ? item[:files].size : item.size)
+    sum + (item.is_a?(Hash) ? item[:files].size : item.size)
   end
   
   if options[:queue_tests]
