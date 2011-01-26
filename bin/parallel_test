@@ -63,13 +63,18 @@ else
   abort "no #{name}s found!" if groups.size == 0
 
   num_tests = groups.inject(0){|sum,item| sum + item.size }
-  puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
+  
+  if options[:queue_tests]
+    puts "total #{num_processes} processes for #{num_tests} #{name}s will be queued, loading ~ #{num_tests / groups.size} #{name}s per process"
+  else
+    puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
+  end    
 
   output = Parallel.map(groups, :in_processes => num_processes) do |group|
     group_index, group_files = if group.is_a? Hash 
       [group[:index], group[:files]]
     else
-      [group, groups.index(group)]  
+      [groups.index(group), group]  
     end  
     puts "parallel group index = #{group_index}, will load #{group_files.size} files"
     klass.run_tests(group_files, group_index, options[:test_options])
