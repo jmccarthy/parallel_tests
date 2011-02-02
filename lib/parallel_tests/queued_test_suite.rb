@@ -17,10 +17,11 @@ module CI #:nodoc:
 end
 
 module QueuedTestSuite
-  class Test::Unit::TestSuite    
+  class Test::Unit::TestSuite   
+    alias_method :atomic_run, :run 
     def run(result, &progress_block)
       @process_number = ENV['TEST_ENV_NUMBER']
-      puts "[PROCESS ##{@process_number}] RUNNING QUEUED TEST SUITE:#{@tests.size} tests loaded"  
+      puts "[PROCESS ##{@process_number}] RUNNING QUEUED TEST SUITE:#{@tests.size} tests loaded : #{@tests.map(&:name)}"  
       yield(STARTED, name)
       run_non_parallel_tests(result, &progress_block)
       run_parallel_tests(result, &progress_block)
@@ -31,7 +32,7 @@ module QueuedTestSuite
 
     def run_non_parallel_tests(result, &progress_block)
       if @process_number.to_i == 0 && !ENV['NON_PARALLEL_TESTS'].to_a.empty?
-        # puts "[PROCESS ##{@process_number}] REQUEST TO DO NON-PARALLEL TESTS #{ENV['NON_PARALLEL_TESTS'].split(',')}"  
+        puts "[PROCESS ##{@process_number}] REQUEST TO DO NON-PARALLEL TESTS #{ENV['NON_PARALLEL_TESTS'].split(',')}"  
         non_queueable_test_names = ENV['NON_PARALLEL_TESTS'].split(',')
         queueable_tests, non_queueable_tests = queueable_tests(@tests, non_queueable_test_names)
         # puts "[PROCESS ##{@process_number}] FIRST DO NON-PARALLEL TESTS #{non_queueable_tests.size}"            
@@ -61,7 +62,7 @@ module QueuedTestSuite
       pull_and_run(:test_suite_queue, result, &progress_block)
       pull_and_run(:test_case_queue, result, &progress_block)
     end
-    
+
     def enqueue_for_later
       if !@master.tests_registered?
         [:test_suite_queue, :test_case_queue].each do |queue_type|
@@ -94,6 +95,7 @@ module QueuedTestSuite
     def run_test_cases(test_cases, result, &progress_block)
       test_cases.each do |test_case|          
         if test_case
+          # puts "Running test case #{test_case.name}: #{test_case.respond_to?(:tests) ? test_case.tests.size : 0}"
           test_case.run(result, &progress_block)
         else
           puts "[PROCESS ##{@process_number}] ERROR: UNABLE TO FIND TEST CASE #{test_case.inspect} )"  
@@ -102,13 +104,10 @@ module QueuedTestSuite
     end  
 
     def run_test_suites(test_suites, result, &progress_block)
-      debugger
       test_suites.each do |test_suite|          
         if test_suite
-          puts "TEST SUITE:#{test_suite.name} has tests #{test_suite.tests.size}"
-          test_suite.tests.each do |test_case|
-            test_case.run(result, &progress_block)
-          end  
+          puts "TEST SUITE #{test_suite.name} has tests: #{test_suite.respond_to?(:tests) ? test_suite.tests.size : 0}"
+          test_suite.atomic_run(result, &progress_block)
         else
           puts "[PROCESS ##{@process_number}] ERROR: UNABLE TO FIND TEST SUITE #{test_suite.inspect} )"  
         end

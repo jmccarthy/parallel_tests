@@ -5,7 +5,7 @@ $LOAD_PATH << "test"
 
 class MasterRunner
 
-  URL = "druby://127.0.0.1:1345"
+  URL = "druby://127.0.0.1:5678"
 
   def initialize
     @mutex = Mutex.new

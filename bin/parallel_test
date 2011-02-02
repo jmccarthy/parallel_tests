@@ -57,6 +57,10 @@ else
   
   groups = klass.tests_in_groups(options[:files] || tests_folder, num_processes, :no_sort => options[:no_sort], :queue_tests => options[:queue_tests])
   
+  if groups.flatten.empty?
+    groups = klass.tests_in_groups(options[:files] || '', num_processes, :no_sort => options[:no_sort], :queue_tests => options[:queue_tests])
+  end  
+  
   num_processes = groups.size
 
   #adjust processes to groups
@@ -68,6 +72,9 @@ else
   
   if options[:queue_tests]
     puts "total #{num_processes} processes for #{num_tests} #{name}s will be queued, loading ~ #{num_tests / groups.size} #{name}s per process"
+    #start the master runner
+    require File.join(File.dirname(__FILE__), '..', 'lib', 'parallel_tests', 'master_runner.rb')
+    DRb.start_service(MasterRunner::URL, MasterRunner.new)
   else
     puts "#{num_processes} processes for #{num_tests} #{name}s, ~ #{num_tests / groups.size} #{name}s per process"
   end    

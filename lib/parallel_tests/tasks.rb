@@ -37,23 +37,19 @@ namespace :parallel do
   end
 
 
-  desc 'start a master runner'
-  namespace :master_runner do
-    task :start do         
-      require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'parallel_tests', 'master_runner.rb')
-      DRb.start_service(MasterRunner::URL, MasterRunner.new)
-    end
-  end
+  # desc 'start a master runner'
+  #   namespace :master_runner do
+  #     task :start do         
+  #       require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'parallel_tests', 'master_runner.rb')
+  #       DRb.start_service(MasterRunner::URL, MasterRunner.new)
+  #     end
+  #   end
 
   ['test', 'spec', 'features'].each do |type|
     desc "run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, :count, :path_prefix, :options do |t,args|
-
-      if ENV['QUEUE_TESTS'] == 'true'      
-        #start the master runner
-        Rake::Task['parallel:master_runner:start'].invoke
-        parallelize_opt = "  --queue-tests --no-sort"
-      end
+      
+      parallelize_opt = "  --queue-tests --no-sort" if ENV['QUEUE_TESTS'] == 'true'      
       
       $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..'))
       require "parallel_tests"
