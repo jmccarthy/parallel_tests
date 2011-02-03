@@ -4,7 +4,7 @@ require 'parallel_tests/railtie'
 require 'drb'
 
 class ParallelTests
-  
+
   VERSION = File.read( File.join(File.dirname(__FILE__),'..','VERSION') ).strip
 
   # parallel:spec[2,controller] <-> parallel:spec[controller]
@@ -22,17 +22,21 @@ class ParallelTests
   end
 
   # finds all tests and partitions them into groups
-  def self.tests_in_groups(root, num_groups, options={})
-    if options[:queue_tests]
+  def self.tests_in_groups(root, num_groups, options={})    
+    exclude_tests = ENV['EXCLUDE_TESTS'].to_a.empty? ? [] : ENV['EXCLUDE_TESTS'].split(',')
+    include_only_tests = ENV['INCLUDE_ONLY_TESTS'].to_a.empty? ? [] : ENV['INCLUDE_ONLY_TESTS'].split(',')
+    puts "EXCLUDED TESTS:#{exclude_tests.inspect}"
+    puts "INCLUDED ONLY TESTS:#{include_only_tests.inspect}"
+    if options[:queue_tests]      
       non_parallel_tests = ENV['NON_PARALLEL_TESTS'].to_a.empty? ? [] : ENV['NON_PARALLEL_TESTS'].split(',')
-      exclude_tests = ENV['EXCLUDE_TESTS'].to_a.empty? ? [] : ENV['EXCLUDE_TESTS'].split(',')
-      puts "EXCLUDED TESTS:#{exclude_tests.inspect}"
+      non_atomic_test_suites = ENV['NON_ATOMIC_TEST_SUITES'].to_a.empty? ? [] : ENV['NON_ATOMIC_TEST_SUITES'].split(',')
+      puts "NON-ATOMIC TEST SUITES:#{non_atomic_test_suites.inspect}"
       puts "NON-PARALLEL TESTS:#{non_parallel_tests.inspect}"
-      Grouper.in_groups_for_queue(find_tests(root, exclude_tests), num_groups, non_parallel_tests)      
+      Grouper.in_groups_for_queue(find_tests(root, exclude_tests, include_only_tests), num_groups, non_parallel_tests)      
     elsif options[:no_sort] == true
-      Grouper.in_groups(find_tests(root), num_groups)
+      Grouper.in_groups(find_tests(root, exclude_tests, include_only_tests), num_groups)
     else        
-      Grouper.in_even_groups_by_size(tests_with_runtime(root), num_groups)
+      Grouper.in_even_groups_by_size(tests_with_runtime(root,exclude_tests, include_only_tests), num_groups)
     end
   end
 
@@ -41,7 +45,7 @@ class ParallelTests
     cmd = "ruby -Itest #{options} -e '[#{require_list}].each {|f| require f }'"    
     execute_command(cmd, process_number)[:stdout]
   end
-      
+
   def self.execute_command(cmd, process_number)
     cmd = "TEST_ENV_NUMBER=#{test_env_number(process_number)} ; export TEST_ENV_NUMBER; #{cmd}"
     puts "execute_command: #{cmd}"
@@ -58,11 +62,11 @@ class ParallelTests
   end
 
   def self.find_results(test_output)
-    test_output.split("\n").map {|line|
+    test_output.split("\n").map do |line|
       line = line.gsub(/\.|F|\*/,'')
       next unless line_is_result?(line)
-      line
-    }.compact
+      line 
+    end.compact
   end
 
   def self.failed?(results)
@@ -104,8 +108,8 @@ class ParallelTests
     "_test.rb"
   end
 
-  def self.tests_with_runtime(root,exclude_list=[])
-    tests = find_tests(root,exclude_list)
+  def self.tests_with_runtime(root,exclude_list=[], include_only_list=[])
+    tests = find_tests(root, exclude_list, include_only_list)
     runtime_file = File.join(root,'..','tmp','parallel_profile.log')
     lines = File.read(runtime_file).split("\n") rescue []
 
@@ -122,14 +126,20 @@ class ParallelTests
     end
   end
 
-  def self.find_tests(root,exclude_list=[])
+  def self.find_tests(root,exclude_list=[], include_only_list=[])
     if root.is_a?(Array)
       root
     else
       files = Dir["#{root}**/**/*#{self.test_suffix}"]
-      exclude_list.each do |excluded|
-        files.delete_if { |f| f.gsub('_','') =~ /#{excluded}/i}      
-      end
+      if !include_only_list.empty?                              
+        files.delete_if do |f| 
+          !include_only_list.detect { |included| f.gsub('_','') =~ /#{included}/i }
+        end      
+      else  
+        exclude_list.each do |excluded|
+          files.delete_if { |f| f.gsub('_','') =~ /#{excluded}/i}      
+        end
+      end        
       files
     end
   end
