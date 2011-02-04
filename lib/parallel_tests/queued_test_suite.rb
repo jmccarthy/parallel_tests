@@ -130,8 +130,10 @@ module QueuedTestSuite
         if test.respond_to?(:tests)
           adj_tests = ENV['MAX_TEST_CASES_PER_SUITE'].to_i <= test.tests.size ? test.tests[-ENV['MAX_TEST_CASES_PER_SUITE'].to_i..-1] : test.tests 
           if !exclude_list.include?(test.name)
-            adj_tests.each do |t|            
-              flattened_test_cases_or_unflattened_suites[0][t.name] = t
+            duplicated_tests = adj_tests.map(&:name) - adj_tests.map(&:name).uniq
+            puts "[PROCESS ##{@process_number}] WARNING: found these tests with duplicate names, it's ok will run them all anyway:#{duplicated_tests.uniq.inspect}" unless duplicated_tests.empty?
+            adj_tests.each_with_index do |t, index|            
+              flattened_test_cases_or_unflattened_suites[0]["#{test.name}::[#{index}]::#{t.name}"] = t
             end  
           else
             flattened_test_cases_or_unflattened_suites[1][test.name] = test
